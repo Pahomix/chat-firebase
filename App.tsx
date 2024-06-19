@@ -1,11 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
+import firebase from 'firebase/app'
+import { useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './src/services/firebaseConfig'
+import useStore from './src/store/store'
+
+import Navigation from './src/navigation/Navigation'
 
 export default function App() {
-  return (
-    <View className="flex-1 items-center justify-center ">
-      <Text className="text-3xl font-bold">Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  const user = useStore((state) => state.user)
+  const setUser = useStore((state) => state.setUser)
+  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user)
+      } else {
+        setUser(null)
+      }
+    })
+    
+    return () => unsubscribe()
+  }, [])
+  
+  return <Navigation user={user} />
 }
