@@ -20,12 +20,11 @@ const AuthStack = () => (
 
 const AppTabs = () => (
 	<Tab.Navigator
-		initialRouteName="Auth"
 		screenOptions={{ headerShown: false }}
 	>
-		<Tab.Screen name="Messages" component={MessagesScreen} />
-		<Tab.Screen name="Friends" component={FriendsScreen} />
-		<Tab.Screen name="Profile" component={ProfileScreen} />
+		<Tab.Screen name="Сообщения" component={MessagesScreen} />
+		<Tab.Screen name="Друзья" component={FriendsScreen} />
+		<Tab.Screen name="Профиль" component={ProfileScreen} />
 	</Tab.Navigator>
 )
 

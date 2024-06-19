@@ -1,7 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import firebase from 'firebase/app'
 import { useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './src/services/firebaseConfig'
 import useStore from './src/store/store'
